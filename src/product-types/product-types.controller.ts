@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { ProductTypesService } from './service/product-types.service';
 import { CreateProductTypeDto, UpdateProductTypeDto } from './dto/create-product-type.dto';
+import { AuthGuard } from 'src/auth/guard/auth.guard';
 
 @Controller('product-types')
+@UseGuards(AuthGuard)
 export class ProductTypesController {
   constructor(private readonly productTypesService: ProductTypesService) {}
 
